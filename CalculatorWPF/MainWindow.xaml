@@ -4,9 +4,75 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorWPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="20" FontWeight="Bold"
+        Title="Calculator" Height="750" Width="480">
     <Grid>
-        
+        <!--#region ::Grid Definitions::-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region ::Text Boxes::-->
+        <TextBox x:Name="Text_Output_D" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Text_Output_C" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Text_Output_B" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Text_Output_A" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Answer_Output_D" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" TextAlignment="Right" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Answer_Output_C" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" TextAlignment="Right" Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Answer_Output_B" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" TextAlignment="Right" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Answer_Output_A" Background="AliceBlue" IsReadOnly="True" MaxHeight="30" TextAlignment="Right" Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Text_Input" IsReadOnly="True" Background="AliceBlue" FontSize="30" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="5"/>
+        <!--#endregion-->
+
+        <!--#region ::Number Buttons::-->
+        <Button Name="Button_7" Content="7" Click="Button_IN_Click" Grid.Column="1" Grid.Row="6"/>
+        <Button Name="Button_8" Content="8" Click="Button_IN_Click" Grid.Column="2" Grid.Row="6"/>
+        <Button Name="Button_9" Content="9" Click="Button_IN_Click" Grid.Column="3" Grid.Row="6"/>
+        <Button Name="Button_4" Content="4" Click="Button_IN_Click" Grid.Column="1" Grid.Row="7"/>
+        <Button Name="Button_5" Content="5" Click="Button_IN_Click" Grid.Column="2" Grid.Row="7"/>
+        <Button Name="Button_6" Content="6" Click="Button_IN_Click" Grid.Column="3" Grid.Row="7"/>
+        <Button Name="Button_1" Content="1" Click="Button_IN_Click" Grid.Column="1" Grid.Row="8"/>
+        <Button Name="Button_2" Content="2" Click="Button_IN_Click" Grid.Column="2" Grid.Row="8"/>
+        <Button Name="Button_3" Content="3" Click="Button_IN_Click" Grid.Column="3" Grid.Row="8"/>
+        <!--#endregion-->
+
+        <!--#region ::Zero and Decimal Buttons-->
+        <Button Name="Button_0" Content="0" Click="Button_IN_Click" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2"/>
+        <Button Name="Button_Decimal" Content="." FontSize="28" Click="Button_IN_Click" Grid.Column="3" Grid.Row="9"/>
+        <!--#endregion-->
+
+        <!--#region ::Operator Buttons::-->
+        <Button Name="Button_Add" Content="+" FontSize="28" Click="Button_IN_Click" Grid.Column="4" Grid.Row="9"/>
+        <Button Name="Button_Sub" Content="-" FontSize="28" Click="Button_IN_Click" Grid.Column="4" Grid.Row="8"/>
+        <Button Name="Button_Mul" Content="*" FontSize="28" Click="Button_IN_Click" Grid.Column="4" Grid.Row="7"/>
+        <Button Name="Button_Div" Content="/" FontSize="28" Click="Button_IN_Click" Grid.Column="4" Grid.Row="6"/>
+        <!--#endregion-->
+
+        <!--#region ::Management Buttons::-->
+        <Button Name="Button_Enter" Content="Enter" Click="Button_Enter_Click" Grid.Column="5" Grid.Row="9"/>
+        <Button Name="Button_ClearALL" Content="CA" Click="Button_CA_Click" Grid.Column="5" Grid.Row="7"/>
+        <Button Name="Button_Back" Content="Bsp" Click="Button_Back_Click" Grid.Column="5" Grid.Row="6"/>
+        <Button Name="Button_Clear" Content="Clear" Click="Button_Clear_Click" Grid.Column="5" Grid.Row="8"/>
+        <!--#endregion-->
     </Grid>
 </Window>
