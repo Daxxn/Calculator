@@ -47,7 +47,7 @@ namespace CalculatorLibrary
             List<string> splitNums = new List<string>();
             try
             {
-                splitNums = Input.Split('+', '-', '*', '/').ToList();
+                splitNums = Input.Split('+', '-', '*', '/', '%').ToList();
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace CalculatorLibrary
         /// </summary>
         private void SplitOperators()
         {
-            char[] operators = new char[] { '+', '-', '/', '*' };
+            char[] operators = new char[] { '+', '-', '/', '*', '%' };
 
             for (int i = 0; i < Input.Length; i++)
             {

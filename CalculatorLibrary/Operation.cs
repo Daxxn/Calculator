@@ -55,9 +55,17 @@ namespace CalculatorLibrary
             {
                 return Sub();
             }
-            else
+            else if (Op == '+')
             {
                 return Add();
+            }
+            else if(Op == '%')
+            {
+                return Perc();
+            }
+            else
+            {
+                throw new Exception("No Operator Found");
             }
         }
 
@@ -79,6 +87,11 @@ namespace CalculatorLibrary
         public dynamic Div()
         {
             return X / Y;
+        }
+
+        public dynamic Perc()
+        {
+            return X / Y * 100;
         }
         #endregion
 
@@ -102,7 +115,7 @@ namespace CalculatorLibrary
         }
 
         /// <summary>
-        /// Must be + , - , * , /
+        /// Must be + , - , * , / , %
         /// </summary>
         public char Op
         {

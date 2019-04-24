@@ -83,27 +83,38 @@ namespace CalculatorLibrary
             {
                 for (int i = 0; i < tempOps.Count; i++)
                 {
+                    // if next op is Divide
                     if (tempOps[i] == '/')
                     {
                         tempNums = OOPStep(tempNums, tempOps, i);
                         break;
                     }
 
+                    // if next op is Multiply and Divide is done
                     else if (tempOps[i] == '*' && !tempOps.Contains('/'))
                     {
                         tempNums = OOPStep(tempNums, tempOps, i);
                         break;
                     }
 
+                    // if next op is Subtract and Divide, Multiply are done
                     else if (tempOps[i] == '-' && !tempOps.Contains('/') && !tempOps.Contains('*'))
                     {
                         tempNums = OOPStep(tempNums, tempOps, i);
                         break;
                     }
 
+                    // if next op is Add and Divide, Multiply, Subtract are done
                     else if (tempOps[i] == '+' && !tempOps.Contains('/') && !tempOps.Contains('*') && !tempOps.Contains('-'))
                     {
                         tempNums = OOPStep(tempNums, tempOps, i);
+                        break;
+                    }
+
+                    // if next op is Percentage and all others are done
+                    else if(tempOps[i] == '%' && !tempOps.Contains('+') && !tempOps.Contains('/') && !tempOps.Contains('*') && !tempOps.Contains('-'))
+                    {
+                        tempNums = OOPStepPercent(tempNums, tempOps, i);
                         break;
                     }
                 }
@@ -148,6 +159,16 @@ namespace CalculatorLibrary
                     newNums.Add(tempNums[j]);
                 }
             }
+            return newNums;
+        }
+
+        private static List<double> OOPStepPercent(List<double> tempNums, List<char> tempOps, int index)
+        {
+            Operation tempOp = new Operation(tempNums[index], tempNums[index + 1], tempOps[index]);
+            List<double> newNums = new List<double>();
+
+            newNums.Add(tempOp.selectOperation());
+
             return newNums;
         }
         #endregion

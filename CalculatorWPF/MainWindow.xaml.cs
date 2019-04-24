@@ -49,15 +49,19 @@ namespace CalculatorWPF
         /// <returns>Returns input if output is good. Returns empty if output is bad.</returns>
         private string CheckOperators(string input)
         {
-            string[] ops = new string[] { "+", "-", "*", "/" };
+            string[] ops = new string[] { "+", "-", "*", "/", "%" };
             string dec = ".";
 
+            // Checks for any other characters
             if (equasionInput.Length != 0)
             {
+                // Checks if the last input equals the array of operators
                 if (ops.Contains(equasionInput.Last().ToString()))
                 {
+                    // Checks if this input equals the array of operators
                     if (!ops.Contains(input))
                     {
+                        // Checks for a decimal
                         if (input == dec)
                         {
                             return "0" + input;
