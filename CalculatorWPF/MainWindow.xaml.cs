@@ -51,44 +51,84 @@ namespace CalculatorWPF
         {
             string[] ops = new string[] { "+", "-", "*", "/", "%" };
             string dec = ".";
+            string empty = String.Empty;
 
             // Checks for any other characters
             if (equasionInput.Length != 0)
             {
-                // Checks if the last input equals the array of operators
+                // Checks if the last input equals the array of operators.
                 if (ops.Contains(equasionInput.Last().ToString()))
                 {
-                    // Checks if this input equals the array of operators
+                    // Checks if this input is not equal to the array of operators.
                     if (!ops.Contains(input))
                     {
                         // Checks for a decimal
                         if (input == dec)
                         {
-                            return "0" + input;
+                            if(CheckDecimal(input, ops))
+                            {
+                                return "0" + input;
+                            }
+                            else
+                            {
+                                return empty;
+                            }
                         }
                         else
                         {
+                            
                             return input;
                         }
                     }
                     else
                     {
-                        return String.Empty;
+                        return empty;
                     }
+                }
+                else
+                {
+                    if (!CheckDecimal(input, ops))
+                    {
+                        return input;
+                    }
+                    else
+                    {
+                        return empty;
+                    }
+                }
+            }
+            // Makes sure its not an operator.
+            else if (!ops.Contains(input))
+            {
+                if (input == dec)
+                {
+                    return "0" + input;
                 }
                 else
                 {
                     return input;
                 }
             }
-            else if (!ops.Contains(input))
-            {
-                return input;
-            }
             else
             {
                 return String.Empty;
             }
+        }
+
+        /// <summary>
+        /// Supposed to check for a decomal in the last number.
+        /// Needs more work.
+        /// </summary>
+        private bool CheckDecimal(string input, string[] ops)
+        {
+            string dec = ".";
+            string[] splitInput = input.Split(ops, StringSplitOptions.None);
+
+            if (dec.Contains(splitInput.Last()))
+            {
+                return true;
+            }
+            else { return false; }
         }
 
         /// <summary>
@@ -99,12 +139,15 @@ namespace CalculatorWPF
             inputDisplay.Input = equasionInput;
 
             #region New Parser & Calculator Classes
-            Parser parser = new Parser(equasionInput);
-            parser.SplitInputString();
-            Calculator calculator = new Calculator(parser.Numbers, parser.Operators);
-            double output = calculator.OOPStart();
-            answerDisplay.Input = output.ToString();
-            equasionInput = String.Empty;
+            if (equasionInput.Length > 0)
+            {
+                Parser parser = new Parser(equasionInput);
+                parser.SplitInputString();
+                Calculator calculator = new Calculator(parser.Numbers, parser.Operators);
+                double output = calculator.OOPStart();
+                answerDisplay.Input = output.ToString();
+                equasionInput = String.Empty; 
+            }
             #endregion
 
             inputDisplay.Next();

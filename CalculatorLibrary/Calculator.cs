@@ -63,6 +63,7 @@ namespace CalculatorLibrary
         private double OrderOfOperationsSimple()
         {
             Operation temp = new Operation(Numbers[0], Numbers[1], Operators[0]);
+
             return temp.selectOperation();
         }
 
