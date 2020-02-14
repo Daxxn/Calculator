@@ -29,6 +29,8 @@ namespace CalculatorWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            KeyData key_0 = new KeyData(Button_0.GetHashCode(), Button_0);
         }
 
         /// <summary>
@@ -37,9 +39,16 @@ namespace CalculatorWPF
         /// </summary>
         private void Button_IN_Click(object sender, RoutedEventArgs e)
         {
-            string temp = CheckOperators(e.Source.ToString().Remove(0, 32));
-            equasionInput += temp;
-            Text_Input.Text += temp;
+            #region Testing Button Bindings
+            MessageBox.Show($"{sender.GetHashCode()}");
+            MessageBox.Show($"{sender.GetType()}");
+            #endregion
+
+            #region Normal Operation
+            //string temp = CheckOperators(e.Source.ToString().Remove(0, 32));
+            //equasionInput += temp;
+            //Text_Input.Text += temp;
+            #endregion
         }
 
         /// <summary>
@@ -161,6 +170,23 @@ namespace CalculatorWPF
             Answer_Output_B.Text = answerDisplay.DataList[2];
             Answer_Output_C.Text = answerDisplay.DataList[1];
             Answer_Output_D.Text = answerDisplay.DataList[0];
+        }
+
+        private void Button_Test_Click(Object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
+    }
+
+    public struct KeyData
+    {
+        int KeyCode { get; set; }
+        Button ButtonData { get; set; }
+
+        public KeyData(int keyCode, Button button)
+        {
+            KeyCode = keyCode;
+            ButtonData = button;
         }
     }
 }

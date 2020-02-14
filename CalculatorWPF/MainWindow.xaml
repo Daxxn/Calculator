@@ -69,7 +69,8 @@
         <!--#endregion-->
 
         <!--#region ::Management Buttons::-->
-        <Button Name="Button_Enter" Content="Enter" Click="Button_Enter_Click" Grid.Column="5" Grid.Row="9"/>
+        <Button Name="Button_Enter" Content="Enter" Click="Button_Enter_Click" Grid.Column="5" Grid.Row="9" />
+        <Button Name="Button_Test" Content="Enter" Click="Button_Test_Click" Grid.Column="6" Grid.Row="9"  DataContext="{Binding Path=Key.enter}"/>
         <Button Name="Button_ClearALL" Content="CA" Click="Button_CA_Click" Grid.Column="5" Grid.Row="7"/>
         <Button Name="Button_Back" Content="Bsp" Click="Button_Back_Click" Grid.Column="5" Grid.Row="6"/>
         <Button Name="Button_Clear" Content="Clear" Click="Button_Clear_Click" Grid.Column="5" Grid.Row="8"/>
