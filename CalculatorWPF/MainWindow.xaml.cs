@@ -123,16 +123,20 @@ namespace CalculatorWPF
             #region New Parser & Calculator Classes
             Parser parser = new Parser(equasionInput);
             parser.SplitInputString();
-            Calculator calculator = new Calculator(parser.Numbers, parser.Operators);
-            double output = calculator.OOPStart();
-            answerDisplay.Input = output.ToString();
-            equasionInput = String.Empty;
-            #endregion
 
-            inputDisplay.Next();
-            answerDisplay.Next();
-            OutputPrint();
-            Text_Input.Clear();
+            if ( parser.Numbers != null )
+            {
+                Calculator calculator = new Calculator(parser.Numbers, parser.Operators);
+                double output = calculator.OOPStart();
+                answerDisplay.Input = output.ToString();
+                equasionInput = String.Empty;
+
+                inputDisplay.Next();
+                answerDisplay.Next();
+                OutputPrint();
+                Text_Input.Clear();
+            }
+            #endregion
         }
 
         /// <summary>

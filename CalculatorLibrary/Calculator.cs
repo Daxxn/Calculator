@@ -41,17 +41,22 @@ namespace CalculatorLibrary
         /// <returns>Returns the Answer. (Double)</returns>
         public double OOPStart()
         {
-            if (Numbers.Count == 2 && Operators.Count == 1)
+            if ( Numbers is null )
+            {
+                throw new Exception("Numbers is null.");
+            }
+
+            if ( Numbers.Count == 2 && Operators.Count == 1 )
             {
                 return OrderOfOperationsSimple();
             }
-            else if (Numbers.Count > 2 && Operators.Count > 1)
+            else if ( Numbers.Count > 2 && Operators.Count > 1 )
             {
                 return OrderOfOperationsComplex(Numbers, Operators);
             }
             else
             {
-                return Numbers[0];
+                return Numbers[ 0 ];
             }
         }
 

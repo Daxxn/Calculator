@@ -43,26 +43,22 @@ namespace CalculatorLibrary
         /// </summary>
         private void SplitNumbers()
         {
-            List<double> nums = new List<double>();
-            List<string> splitNums = new List<string>();
             try
             {
-                splitNums = Input.Split('+', '-', '*', '/').ToList();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Source);
-                Numbers = null;
-            }
+                string[] splitNums = Input.Split('+', '-', '*', '/');
 
-            foreach (var item in splitNums)
-            {
-                if (Numbers == null)
+                foreach (var item in splitNums)
                 {
-                    Numbers = new List<double>();
+                    if (Numbers == null)
+                    {
+                        Numbers = new List<double>();
+                    }
+                    Numbers.Add(Double.Parse(item));
                 }
-                Numbers.Add(Double.Parse(item));
+            }
+            catch (Exception)
+            {
+                Numbers = null;
             }
         }
 
