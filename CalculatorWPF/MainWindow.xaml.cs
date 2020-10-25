@@ -30,6 +30,23 @@ namespace CalculatorWPF
         {
             InitializeComponent();
 
+            Button_0.DataContext = "0";
+            Button_1.DataContext = "1";
+            Button_2.DataContext = "2";
+            Button_3.DataContext = "3";
+            Button_4.DataContext = "4";
+            Button_5.DataContext = "5";
+            Button_6.DataContext = "6";
+            Button_7.DataContext = "7";
+            Button_8.DataContext = "8";
+            Button_9.DataContext = "9";
+            Button_Decimal.DataContext = ".";
+
+            Button_Add.DataContext = "+";
+            Button_Sub.DataContext = "-";
+            Button_Mul.DataContext = "*";
+            Button_Div.DataContext = "/";
+
             KeyData key_0 = new KeyData(Button_0.GetHashCode(), Button_0);
         }
 
@@ -40,14 +57,14 @@ namespace CalculatorWPF
         private void Button_IN_Click(object sender, RoutedEventArgs e)
         {
             #region Testing Button Bindings
-            MessageBox.Show($"{sender.GetHashCode()}");
-            MessageBox.Show($"{sender.GetType()}");
+            var btn = e.Source as Button;
+            Console.WriteLine($"{btn.DataContext} type: {btn.DataContext.GetType()}");
             #endregion
 
             #region Normal Operation
-            //string temp = CheckOperators(e.Source.ToString().Remove(0, 32));
-            //equasionInput += temp;
-            //Text_Input.Text += temp;
+            string temp = CheckOperators(btn.DataContext as string);
+            equasionInput += temp;
+            Text_Input.Text += temp;
             #endregion
         }
 
